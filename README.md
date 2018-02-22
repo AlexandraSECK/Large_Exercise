@@ -10,7 +10,9 @@ source:
 
 - https://developers.google.com/maps/documentation/javascript/geocoding
 - https://developers.google.com/maps/documentation/javascript/markers
-- https://developers.google.com/maps/documentation/javascript/geolocation Phase 2: Corresponding to distances. For calculate the distance the user need to put 2 markers into the map by clicking into it. Then they can click into the the button to display the distance. If the user want to put make another research they need to click into another button to delete the markers. To compute the distance I used the geometry library and the function computeDistanceBetween that gives the distance in meters.
+- https://developers.google.com/maps/documentation/javascript/geolocation 
+
+Phase 2: Corresponding to distances. For calculate the distance the user need to put 2 markers into the map by clicking into it. Then they can click into the the button to display the distance. If the user want to put make another research they need to click into another button to delete the markers. To compute the distance I used the geometry library and the function computeDistanceBetween that gives the distance in meters.
 source:
 
 - https://developers.google.com/maps/documentation/javascript/geometry
