@@ -319,8 +319,7 @@ function sendinfo(){
 
 
 //-------------phase 5------------------------------------
-function foundImages(){
-    var address=document.getElementById("address").value;
+function displayOrUpload(address,val){
     var latitude,longitude;
     if(address!=""){
         var geocoder = new google.maps.Geocoder();
@@ -331,7 +330,12 @@ function foundImages(){
                 latitude=parseFloat(latlngStr[0]);
                 longitude=parseFloat(latlngStr[1]);
                 document.getElementById("images").innerHTML="";
-                displayImages(latitude.toPrecision(4),longitude.toPrecision(4));
+                address=results[1].formatted_address;
+                if(val==1)
+                    displayImages(latitude.toPrecision(4),longitude.toPrecision(4)); 
+                if(val==0){
+                    getAndUpload(latitude.toPrecision(4),longitude.toPrecision(4),address);   
+                }
             }
             else{
                 geocoder.geocode( { 'address': address}, function(results, status) {
@@ -340,7 +344,11 @@ function foundImages(){
                             latitude = results[0].geometry.location.lat();
                             longitude = results[0].geometry.location.lng();
                             document.getElementById("images").innerHTML="";
-                            displayImages(latitude.toPrecision(4),longitude.toPrecision(4));
+                            if(val==1)
+                                displayImages(latitude.toPrecision(4),longitude.toPrecision(4)); 
+                            if(val==0){
+                                getAndUpload(latitude.toPrecision(4),longitude.toPrecision(4),address);   
+                            }
                         }
                         else{
                             alert('The coordinates do not seems to exist.');
@@ -353,6 +361,46 @@ function foundImages(){
             }
         });
     }
+
+
+}
+
+function findImages(){
+    var address=document.getElementById("address").value;
+    if(address!=""){
+        displayOrUpload(address,1);
+    }
+    else{
+        alert('You need to put an address or a latlong.')
+    }
+}
+
+function uploadImage() {
+    var address=document.getElementById("address").value;
+    if(address!=""){
+    displayOrUpload(address,0);
+    }
+    else{
+        alert('You need to put an address or a latlong.')
+    }
+}
+
+
+function getAndUpload(lat,lng,address) {
+   navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+      destinationType: Camera.DestinationType.FILE_URI,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+   });
+
+   function onSuccess(imageURI) {
+    saveImage(address,lat,lng,imageURI);
+   }
+
+   function onFail(message) {
+      if(message!="No Image Selected") //to avoid an error if the user does not select an images
+        alert('Failed because: ' + message);
+   }
+
 }
 
 //--------------phase 6----------------------------------------
