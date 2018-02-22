@@ -18,6 +18,9 @@ Phase 2: Corresponding to distances. For calculate the distance the user need to
 To compute the distance I used the geometry library and the function computeDistanceBetween that gives the distance in meters.
 
 source: 
--https://developers.google.com/maps/documentation/javascript/geometry
+- https://developers.google.com/maps/documentation/javascript/geometry
 
 Phase 3: Corresponding to directions. For get the directions it's the same as for the phase 2 but it's display the path and the directions (driving).
+source:
+- https://developers.google.com/maps/documentation/javascript/examples/directions-travel-modes
+- https://developers.google.com/maps/documentation/javascript/directions
