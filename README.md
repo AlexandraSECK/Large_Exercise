@@ -21,6 +21,7 @@ source:
 - https://developers.google.com/maps/documentation/javascript/geometry
 
 Phase 3: Corresponding to directions. For get the directions it's the same as for the phase 2 but it's display the path and the directions (driving).
+
 source:
 - https://developers.google.com/maps/documentation/javascript/examples/directions-travel-modes
 - https://developers.google.com/maps/documentation/javascript/directions
